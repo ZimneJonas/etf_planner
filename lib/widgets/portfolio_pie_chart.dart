@@ -183,8 +183,10 @@ class PortfolioLegend extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  '${allocation.option.ticker} - ${allocation.percentage.toStringAsFixed(1)}%',
+                  '${allocation.option.name} - ${allocation.percentage.toStringAsFixed(1)}%',
                   style: Theme.of(context).textTheme.bodyMedium,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               Text(

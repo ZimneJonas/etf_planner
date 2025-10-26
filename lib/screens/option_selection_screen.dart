@@ -15,20 +15,20 @@ class OptionSelectionScreen extends StatefulWidget {
 }
 
 class _OptionSelectionScreenState extends State<OptionSelectionScreen> {
-  final Set<String> _selectedTickers = <String>{};
+  final Set<String> _selectedCategories = <String>{};
 
   List<InvestmentOption> get _selectedOptions {
     return InvestmentOptionsDatabase.options
-        .where((option) => _selectedTickers.contains(option.ticker))
+        .where((option) => _selectedCategories.contains(option.categoryId))
         .toList();
   }
 
   void _toggleSelection(InvestmentOption option) {
     setState(() {
-      if (_selectedTickers.contains(option.ticker)) {
-        _selectedTickers.remove(option.ticker);
+      if (_selectedCategories.contains(option.categoryId)) {
+        _selectedCategories.remove(option.categoryId);
       } else {
-        _selectedTickers.add(option.ticker);
+        _selectedCategories.add(option.categoryId);
       }
     });
   }
@@ -120,7 +120,7 @@ class _OptionSelectionScreenState extends State<OptionSelectionScreen> {
                 final option = InvestmentOptionsDatabase.options[index];
                 return InvestmentOptionCard(
                   option: option,
-                  isSelected: _selectedTickers.contains(option.ticker),
+                  isSelected: _selectedCategories.contains(option.categoryId),
                   onToggleSelection: () => _toggleSelection(option),
                 );
               },

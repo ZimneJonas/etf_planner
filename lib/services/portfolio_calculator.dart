@@ -134,7 +134,7 @@ class PortfolioCalculator {
 
     // Find and update the allocation for the specified option
     for (int i = 0; i < allocations.length; i++) {
-      if (allocations[i].option.ticker == option.ticker) {
+      if (allocations[i].option.categoryId == option.categoryId) {
         allocations[i] = PortfolioAllocation(
           option: option,
           percentage: newPercentage,
@@ -147,7 +147,7 @@ class PortfolioCalculator {
     final total = allocations.fold(0.0, (sum, alloc) => sum + alloc.percentage);
     if (total != 100.0) {
       final otherAllocations = allocations
-          .where((alloc) => alloc.option.ticker != option.ticker)
+          .where((alloc) => alloc.option.categoryId != option.categoryId)
           .toList();
       if (otherAllocations.isNotEmpty) {
         final remainingPercentage = 100.0 - newPercentage;
@@ -156,7 +156,7 @@ class PortfolioCalculator {
             otherAllocations.fold(0.0, (sum, alloc) => sum + alloc.percentage);
 
         for (int i = 0; i < allocations.length; i++) {
-          if (allocations[i].option.ticker != option.ticker) {
+          if (allocations[i].option.categoryId != option.categoryId) {
             allocations[i] = PortfolioAllocation(
               option: allocations[i].option,
               percentage: allocations[i].percentage * factor,

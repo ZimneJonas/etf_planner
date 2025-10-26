@@ -47,15 +47,8 @@ class AllocationSlider extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
-                        maxLines: 1,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        allocation.option.ticker,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: allocation.option.tierColor,
-                          fontWeight: FontWeight.w500,
-                        ),
                       ),
                     ],
                   ),

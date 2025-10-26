@@ -47,29 +47,48 @@ class PortfolioSummaryBar extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const Spacer(),
-                  if (selectedCount <= 3)
-                    ...selectedOptions.map(
-                      (option) => Container(
-                        margin: const EdgeInsets.only(left: 4),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: option.tierColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          option.ticker,
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: option.tierColor,
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: selectedOptions.take(3).map(
+                          (option) => Container(
+                            margin: const EdgeInsets.only(left: 4),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: option.tierColor.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  option.tierIcon,
+                                  size: 12,
+                                  color: option.tierColor,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  option.name.split(' ').first,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w500,
+                                    color: option.tierColor,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                        ).toList(),
                       ),
                     ),
+                  ),
                 ],
               ),
               const SizedBox(height: 12),

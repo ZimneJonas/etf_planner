@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 enum InvestmentType {
-  etfWorld,
-  etfLeveraged2x,
-  etfLeveraged3x,
-  etfSri,
-  etfClimate,
+  globalIndex,
+  leveraged2x,
+  leveraged3x,
+  sriIndex,
+  climateIndex,
   crypto,
-  stock,
-  regionalEtf,
+  individualStock,
+  regionalIndex,
 }
 
 enum RiskTier {
@@ -18,25 +18,41 @@ enum RiskTier {
   speculative, // Red - Speculative/gambling
 }
 
-class InvestmentOption {
+class InvestmentExample {
   final String name;
   final String ticker;
+  final String description;
+
+  const InvestmentExample({
+    required this.name,
+    required this.ticker,
+    required this.description,
+  });
+}
+
+class InvestmentOption {
+  final String name;
+  final String categoryId;
   final String description;
   final InvestmentType type;
   final RiskTier tier;
   final String riskExplanation;
   final String? region;
   final double? leverageMultiplier;
+  final List<InvestmentExample> examples;
+  final List<String> scientificReferences;
 
   const InvestmentOption({
     required this.name,
-    required this.ticker,
+    required this.categoryId,
     required this.description,
     required this.type,
     required this.tier,
     required this.riskExplanation,
     this.region,
     this.leverageMultiplier,
+    required this.examples,
+    required this.scientificReferences,
   });
 
   Color get tierColor {

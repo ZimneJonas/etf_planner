@@ -22,6 +22,7 @@ class _InvestmentOptionCardState extends State<InvestmentOptionCard>
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
   bool _isExpanded = false;
+  bool _showExamples = false;
 
   @override
   void initState() {
@@ -130,7 +131,7 @@ class _InvestmentOptionCardState extends State<InvestmentOptionCard>
                     ),
                     const SizedBox(height: 12),
 
-                    // Option Name and Ticker
+                    // Option Name (Category Name)
                     Text(
                       widget.option.name,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -138,14 +139,6 @@ class _InvestmentOptionCardState extends State<InvestmentOptionCard>
                         color: widget.isSelected
                             ? widget.option.tierColor
                             : null,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      widget.option.ticker,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -189,6 +182,117 @@ class _InvestmentOptionCardState extends State<InvestmentOptionCard>
                                 widget.option.riskExplanation,
                                 style: Theme.of(context).textTheme.bodySmall
                                     ?.copyWith(color: widget.option.tierColor),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+
+                    // Expandable Examples Section
+                    if (_showExamples && _isExpanded) ...[
+                      const SizedBox(height: 12),
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+                            width: 1,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (widget.option.examples.isNotEmpty) ...[
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.list,
+                                    size: 16,
+                                    color: Theme.of(context).colorScheme.primary,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Examples:',
+                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              ...widget.option.examples.map((example) => Padding(
+                                padding: const EdgeInsets.only(left: 24, bottom: 4),
+                                child: Text(
+                                  '• ${example.name} (${example.ticker})',
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                                  ),
+                                ),
+                              )),
+                              const SizedBox(height: 12),
+                            ],
+                            if (widget.option.scientificReferences.isNotEmpty) ...[
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.science,
+                                    size: 16,
+                                    color: Theme.of(context).colorScheme.primary,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'References:',
+                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              ...widget.option.scientificReferences.map((ref) => Padding(
+                                padding: const EdgeInsets.only(left: 24, bottom: 4),
+                                child: Text(
+                                  '• $ref',
+                                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              )),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
+
+                    // Toggle examples button
+                    if (_isExpanded && (widget.option.examples.isNotEmpty || widget.option.scientificReferences.isNotEmpty)) ...[
+                      const SizedBox(height: 8),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _showExamples = !_showExamples;
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              _showExamples ? Icons.expand_less : Icons.expand_more,
+                              size: 16,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              _showExamples ? 'Hide Examples & References' : 'Show Examples & References',
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ],

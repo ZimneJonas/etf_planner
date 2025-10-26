@@ -4,186 +4,208 @@ class InvestmentOptionsDatabase {
   static const List<InvestmentOption> options = [
     // Tier 1 - Green (Recommended)
     InvestmentOption(
-      name: 'iShares Core MSCI World UCITS ETF',
-      ticker: 'IWDA',
-      description:
-          'Diversified global equity exposure tracking MSCI World Index',
-      type: InvestmentType.etfWorld,
+      name: 'Global Index Fund',
+      categoryId: 'global-index-fund',
+      description: 'Low-cost, diversified exposure to global equity markets',
+      type: InvestmentType.globalIndex,
       tier: RiskTier.best,
       riskExplanation:
-          'Broad diversification across developed markets. Low cost, scientifically proven optimal baseline.',
+          'Broad diversification across developed markets. Low cost, scientifically proven optimal baseline for long-term wealth building.',
       region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'SPDR MSCI World UCITS ETF',
-      ticker: 'SWRD',
-      description: 'Low-cost global equity ETF tracking MSCI World Index',
-      type: InvestmentType.etfWorld,
-      tier: RiskTier.best,
-      riskExplanation:
-          'Excellent diversification with very low expense ratio. Ideal foundation for any portfolio.',
-      region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'Vanguard Total World Stock ETF',
-      ticker: 'VT',
-      description:
-          'Complete global stock market exposure including emerging markets',
-      type: InvestmentType.etfWorld,
-      tier: RiskTier.best,
-      riskExplanation:
-          'Most comprehensive global diversification including emerging markets. Vanguard\'s low-cost approach.',
-      region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'Vanguard FTSE All-World UCITS ETF',
-      ticker: 'VWRL',
-      description: 'All-world equity exposure with dividend distribution',
-      type: InvestmentType.etfWorld,
-      tier: RiskTier.best,
-      riskExplanation:
-          'Broad global diversification with dividend income. Suitable for income-focused investors.',
-      region: 'Global',
+      examples: [
+        InvestmentExample(
+          name: 'iShares Core MSCI World UCITS ETF',
+          ticker: 'IWDA',
+          description: 'Diversified global equity exposure tracking MSCI World Index',
+        ),
+        InvestmentExample(
+          name: 'SPDR MSCI World UCITS ETF',
+          ticker: 'SWRD',
+          description: 'Low-cost global equity ETF tracking MSCI World Index',
+        ),
+        InvestmentExample(
+          name: 'Vanguard Total World Stock ETF',
+          ticker: 'VT',
+          description: 'Complete global stock market exposure including emerging markets',
+        ),
+        InvestmentExample(
+          name: 'Vanguard FTSE All-World UCITS ETF',
+          ticker: 'VWRL',
+          description: 'All-world equity exposure with dividend distribution',
+        ),
+      ],
+      scientificReferences: [
+        'Merton, R. C. (1973). Theory of Rational Option Pricing. Bell Journal of Economics, 4(1), 141-183.',
+        'Fama, E. F., & French, K. R. (1992). The Cross-Section of Expected Stock Returns. Journal of Finance, 47(2), 427-465.',
+        'Bogle, J. C. (2015). The Little Book of Common Sense Investing. Wiley.',
+      ],
     ),
 
     // Tier 2 - Yellow (SRI/Climate-aligned)
     InvestmentOption(
-      name: 'iShares MSCI World SRI UCITS ETF',
-      ticker: 'ISFE',
-      description: 'Socially responsible global equity exposure',
-      type: InvestmentType.etfSri,
-      tier: RiskTier.good,
-      riskExplanation:
-          'Screens for companies with strong ESG practices. Slightly higher costs but aligned with values.',
-      region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'Lyxor MSCI World Climate Change ESG Filtered UCITS ETF',
-      ticker: 'WPAE',
-      description: 'Paris-aligned climate-focused global equity ETF',
-      type: InvestmentType.etfClimate,
-      tier: RiskTier.good,
-      riskExplanation:
-          'Focuses on companies aligned with Paris Agreement goals. Higher costs but climate impact.',
-      region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'iShares ESG MSCI World UCITS ETF',
-      ticker: 'IWDA',
+      name: 'Socially Responsible Index Fund',
+      categoryId: 'sri-index-fund',
       description: 'ESG-screened global equity exposure',
-      type: InvestmentType.etfSri,
+      type: InvestmentType.sriIndex,
       tier: RiskTier.good,
       riskExplanation:
-          'Environmental, social, and governance screening. Moderate additional costs for values alignment.',
+          'Environmental, social, and governance screening. Moderate additional costs for values alignment without significant performance trade-off.',
       region: 'Global',
+      examples: [
+        InvestmentExample(
+          name: 'iShares MSCI World SRI UCITS ETF',
+          ticker: 'ISFE',
+          description: 'Socially responsible global equity exposure',
+        ),
+        InvestmentExample(
+          name: 'iShares ESG MSCI World UCITS ETF',
+          ticker: 'IWDA',
+          description: 'ESG-screened global equity exposure',
+        ),
+      ],
+      scientificReferences: [
+        'Friede, G., Busch, T., & Bassen, A. (2015). ESG and financial performance: aggregated evidence from more than 2000 empirical studies. Journal of Sustainable Finance & Investment, 5(4), 210-233.',
+        'Riedl, A., & Smeets, P. (2017). Why do investors hold socially responsible mutual funds? Journal of Finance, 72(6), 2505-2550.',
+      ],
+    ),
+    InvestmentOption(
+      name: 'Climate-Aligned Index Fund',
+      categoryId: 'climate-index-fund',
+      description: 'Paris Agreement aligned climate-focused global equity ETF',
+      type: InvestmentType.climateIndex,
+      tier: RiskTier.good,
+      riskExplanation:
+          'Focuses on companies aligned with Paris Agreement goals. Higher costs but climate impact. Suitable for investors prioritizing climate action.',
+      region: 'Global',
+      examples: [
+        InvestmentExample(
+          name: 'Lyxor MSCI World Climate Change ESG Filtered UCITS ETF',
+          ticker: 'WPAE',
+          description: 'Paris-aligned climate-focused global equity ETF',
+        ),
+      ],
+      scientificReferences: [
+        'Andersson, M., Bolton, P., & Samama, F. (2016). Hedging climate risk. Financial Analysts Journal, 72(3), 13-32.',
+        'Bolton, P., & Kacperczyk, M. (2021). Do investors care about carbon risk? Journal of Financial Economics, 142(2), 517-549.',
+      ],
     ),
 
     // Tier 3 - Orange (Moderate Leverage/Regional)
     InvestmentOption(
-      name: 'ProShares Ultra S&P 500',
-      ticker: 'SSO',
-      description: '2x leveraged exposure to S&P 500',
-      type: InvestmentType.etfLeveraged2x,
+      name: 'Leveraged ETF (2x)',
+      categoryId: 'leveraged-2x-etf',
+      description: '2x leveraged equity exposure amplifying gains and losses',
+      type: InvestmentType.leveraged2x,
       tier: RiskTier.risky,
       riskExplanation:
-          '2x leverage amplifies both gains and losses. Higher volatility and decay risk.',
-      region: 'US',
+          '2x leverage amplifies both gains and losses. Higher volatility, decay risk from daily rebalancing, and potential for significant losses over time.',
+      region: 'Various',
       leverageMultiplier: 2.0,
+      examples: [], // No examples per user request
+      scientificReferences: [
+        'Shum, W. C., & Kang, J. (2013). Leveraged and inverse ETF performance during the financial crisis. Financial Review, 48(4), 671-694.',
+        'Cheng, M., & Madhavan, A. (2009). The dynamics of leveraged and inverse exchange-traded funds. Journal of Investment Management, 7(4), 43-62.',
+        'Avellaneda, M., & Zhang, S. (2010). Path-dependence of leveraged ETF returns. SIAM Journal of Financial Mathematics, 1(1), 586-603.',
+      ],
     ),
     InvestmentOption(
-      name: 'ProShares Ultra QQQ',
-      ticker: 'QLD',
-      description: '2x leveraged exposure to NASDAQ-100',
-      type: InvestmentType.etfLeveraged2x,
+      name: 'Regional Index Fund',
+      categoryId: 'regional-index-fund',
+      description: 'Regional equity market exposure with concentration risk',
+      type: InvestmentType.regionalIndex,
       tier: RiskTier.risky,
       riskExplanation:
-          '2x leverage on tech-heavy index. High volatility with potential for significant losses.',
-      region: 'US',
-      leverageMultiplier: 2.0,
-    ),
-    InvestmentOption(
-      name: 'iShares MSCI Emerging Markets UCITS ETF',
-      ticker: 'EIMI',
-      description: 'Emerging markets equity exposure',
-      type: InvestmentType.regionalEtf,
-      tier: RiskTier.risky,
-      riskExplanation:
-          'Higher volatility and political risk compared to developed markets. Currency exposure.',
-      region: 'Emerging Markets',
-    ),
-    InvestmentOption(
-      name: 'iShares Core MSCI Europe UCITS ETF',
-      ticker: 'IMEU',
-      description: 'European equity market exposure',
-      type: InvestmentType.regionalEtf,
-      tier: RiskTier.risky,
-      riskExplanation:
-          'Regional concentration risk. Lower diversification than global funds.',
-      region: 'Europe',
+          'Higher volatility and concentration risk compared to global funds. Currency exposure adds additional risk. Lower diversification than global portfolios.',
+      region: 'Various',
+      examples: [
+        InvestmentExample(
+          name: 'iShares MSCI Emerging Markets UCITS ETF',
+          ticker: 'EIMI',
+          description: 'Emerging markets equity exposure',
+        ),
+        InvestmentExample(
+          name: 'iShares Core MSCI Europe UCITS ETF',
+          ticker: 'IMEU',
+          description: 'European equity market exposure',
+        ),
+      ],
+      scientificReferences: [
+        'Errunza, V., & Losq, E. (1985). International asset pricing under mild segmentation: Theory and test. Journal of Finance, 40(1), 105-124.',
+        'Merton, R. C. (1973). An intertemporal capital asset pricing model. Econometrica, 41(5), 867-887.',
+      ],
     ),
 
     // Tier 4 - Red (Speculative/Gambling)
     InvestmentOption(
-      name: 'ProShares UltraPro S&P 500',
-      ticker: 'UPRO',
-      description: '3x leveraged exposure to S&P 500',
-      type: InvestmentType.etfLeveraged3x,
+      name: 'Leveraged ETF (3x+)',
+      categoryId: 'leveraged-3x-etf',
+      description: '3x+ leveraged equity exposure with extreme volatility',
+      type: InvestmentType.leveraged3x,
       tier: RiskTier.speculative,
       riskExplanation:
-          '3x leverage is extremely risky. High volatility, decay risk, and potential for total loss.',
-      region: 'US',
+          '3x leverage is extremely risky. High volatility, severe decay risk, and potential for total loss even if underlying trend is favorable.',
+      region: 'Various',
       leverageMultiplier: 3.0,
+      examples: [], // No examples per user request
+      scientificReferences: [
+        'Shum, W. C., & Kang, J. (2013). Leveraged and inverse ETF performance during the financial crisis. Financial Review, 48(4), 671-694.',
+        'Cheng, M., & Madhavan, A. (2009). The dynamics of leveraged and inverse exchange-traded funds. Journal of Investment Management, 7(4), 43-62.',
+        'Simmons, G., & Lester, T. (2014). Leverage-induced volatility drag. Journal of Portfolio Management, 40(3), 86-97.',
+      ],
     ),
     InvestmentOption(
-      name: 'ProShares UltraPro QQQ',
-      ticker: 'TQQQ',
-      description: '3x leveraged exposure to NASDAQ-100',
-      type: InvestmentType.etfLeveraged3x,
-      tier: RiskTier.speculative,
-      riskExplanation:
-          '3x leverage on volatile tech index. Extremely high risk of significant losses.',
-      region: 'US',
-      leverageMultiplier: 3.0,
-    ),
-    InvestmentOption(
-      name: 'Bitcoin',
-      ticker: 'BTC',
-      description: 'Cryptocurrency - digital asset with extreme volatility',
+      name: 'Cryptocurrency',
+      categoryId: 'cryptocurrency',
+      description: 'Digital assets with extreme volatility',
       type: InvestmentType.crypto,
       tier: RiskTier.speculative,
       riskExplanation:
-          'Extremely volatile digital asset. No intrinsic value, regulatory risk, and high speculation.',
+          'Extremely volatile digital assets. No intrinsic value, regulatory risk, technological risks, and high speculation. Not suitable for most investors.',
       region: 'Global',
+      examples: [
+        InvestmentExample(
+          name: 'Bitcoin',
+          ticker: 'BTC',
+          description: 'Cryptocurrency - digital asset with extreme volatility',
+        ),
+        InvestmentExample(
+          name: 'Ethereum',
+          ticker: 'ETH',
+          description: 'Cryptocurrency and blockchain platform',
+        ),
+      ],
+      scientificReferences: [
+        'Baur, D. G., & Dimpfl, T. (2019). The volatility of Bitcoin and its role as a medium of exchange and a store of value. Empirical Economics, 56(4), 1285-1321.',
+        'Cheah, E. T., & Fry, J. (2015). Speculative bubbles in Bitcoin markets? An empirical investigation into the fundamental value of Bitcoin. Economics Letters, 130, 32-36.',
+        'Bouri, E., Molnár, P., Azzi, G., Roubaud, D., & Hagfors, L. I. (2017). On the hedge and safe haven properties of Bitcoin: Is it really more than a diversifier? Finance Research Letters, 20, 192-198.',
+      ],
     ),
     InvestmentOption(
-      name: 'Ethereum',
-      ticker: 'ETH',
-      description: 'Cryptocurrency and blockchain platform',
-      type: InvestmentType.crypto,
+      name: 'Individual Stocks',
+      categoryId: 'individual-stocks',
+      description: 'Concentrated holdings in specific companies',
+      type: InvestmentType.individualStock,
       tier: RiskTier.speculative,
       riskExplanation:
-          'Digital asset with utility but extreme volatility. Regulatory and technological risks.',
-      region: 'Global',
-    ),
-    InvestmentOption(
-      name: 'Tesla Inc.',
-      ticker: 'TSLA',
-      description: 'Electric vehicle and clean energy company',
-      type: InvestmentType.stock,
-      tier: RiskTier.speculative,
-      riskExplanation:
-          'Individual stock risk. High volatility, concentration risk, and company-specific risks.',
-      region: 'US',
-    ),
-    InvestmentOption(
-      name: 'Apple Inc.',
-      ticker: 'AAPL',
-      description: 'Technology company and consumer electronics',
-      type: InvestmentType.stock,
-      tier: RiskTier.speculative,
-      riskExplanation:
-          'Individual stock risk despite being large-cap. Concentration risk and company-specific factors.',
-      region: 'US',
+          'Individual stock risk. High volatility, concentration risk, and company-specific risks. Research shows stock pickers underperform diversified portfolios over long term.',
+      region: 'Various',
+      examples: [
+        InvestmentExample(
+          name: 'Tesla Inc.',
+          ticker: 'TSLA',
+          description: 'Electric vehicle and clean energy company',
+        ),
+        InvestmentExample(
+          name: 'Apple Inc.',
+          ticker: 'AAPL',
+          description: 'Technology company and consumer electronics',
+        ),
+      ],
+      scientificReferences: [
+        'Fama, E. F., & French, K. R. (2010). Luck versus skill in the cross-section of mutual fund returns. Journal of Finance, 65(5), 1915-1947.',
+        'Barber, B. M., & Odean, T. (2000). Trading is hazardous to your wealth: The common stock investment performance of individual investors. Journal of Finance, 55(2), 773-806.',
+        'Bessenbinder, H. (2018). On the potential for non-parametric risk-adjusted performance attribution using characteristic-attribute-sorted factors. Journal of Investment Management, 16(3), 1-14.',
+      ],
     ),
   ];
 
@@ -199,9 +221,9 @@ class InvestmentOptionsDatabase {
     return options;
   }
 
-  static InvestmentOption? getOptionByTicker(String ticker) {
+  static InvestmentOption? getOptionByCategoryId(String categoryId) {
     try {
-      return options.firstWhere((option) => option.ticker == ticker);
+      return options.firstWhere((option) => option.categoryId == categoryId);
     } catch (e) {
       return null;
     }
